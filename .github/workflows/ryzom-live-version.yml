@@ -1,6 +1,9 @@
 name: Ryzom Live Version
 
 on:
+  push:
+    branches: [ "main" ]
+
   schedule:
     - cron: '14 */3 * * *'
 
@@ -28,5 +31,5 @@ jobs:
           ./patch-live-index.sh ${{ env.app }}
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
-          git commit -am "[ci] Update Version"
+          git commit -am "[skip ci] Update Version"
           git push
