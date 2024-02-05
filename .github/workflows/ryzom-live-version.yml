@@ -1,0 +1,38 @@
+name: Ryzom Live Version
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+
+env:
+  app: ryzom_live
+  username: "Github Action"
+  user.email: "zerotacg@users.noreply.github.com"
+
+concurrency:
+  group: "version"
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set reusable strings
+        id: strings
+        shell: bash
+        run: |
+          echo "version=$(./patch-live-version.sh)" >> "$GITHUB_OUTPUT"
+
+      - name: Package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./patch-live-index.sh
+          git config --global user.name '${{ env.username }}'
+          git config --global user.email '${{ env.useremail }}'
+          git commit -am "[ci] Update Version"
+          git push
