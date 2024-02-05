@@ -21,17 +21,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set reusable strings
-        id: strings
-        shell: bash
-        run: |
-          echo "version=$(./patch-live-version.sh)" >> "$GITHUB_OUTPUT"
-
-      - name: Package
+      - name: get current version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./patch-live-index.sh
+          ./patch-live-index.sh ${{ env.app }}
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
           git commit -am "[ci] Update Version"

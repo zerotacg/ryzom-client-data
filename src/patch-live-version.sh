@@ -9,5 +9,5 @@ output_path=${2:-version}
 
 version_file="${app}.version"
 
-mkdir --parents "$(dirname "${output_path}")"
-curl --silent --fail "${base_url}/${version_file}" --output "${output_path/$version_file}"
+mkdir --parents "${output_path}"
+curl --fail "${base_url}/${version_file}" --output "${output_path}/${version_file}"
