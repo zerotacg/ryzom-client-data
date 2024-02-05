@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  package:
+  version:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -28,7 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./patch-live-index.sh ${{ env.app }}
+          ./src/patch-live-index.sh ${{ env.app }}
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
           git commit -am "[skip ci] Update Version"
