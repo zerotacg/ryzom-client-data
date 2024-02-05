@@ -1,9 +1,6 @@
 name: Ryzom Live Version
 
 on:
-  push:
-    branches: [ "main" ]
-
   schedule:
     - cron: '14 */3 * * *'
 
