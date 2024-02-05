@@ -2,7 +2,7 @@ name: Ryzom Live Version
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '14 */3 * * *'
 
 env:
   app: ryzom_live
