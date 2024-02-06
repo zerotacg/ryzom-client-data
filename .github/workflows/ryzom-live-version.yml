@@ -7,7 +7,7 @@ on:
 env:
   app: ryzom_live
   username: "Github Action"
-  user.email: "zerotacg@users.noreply.github.com"
+  useremail: "zerotacg@users.noreply.github.com"
 
 concurrency:
   group: "version"
@@ -28,5 +28,5 @@ jobs:
           ./src/patch-live-version.sh ${{ env.app }}
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
-          git commit -am "[ci] Update Version"
+          git commit -am "[ci] Update Version" || true
           git push
