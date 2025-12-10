@@ -41,7 +41,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dist
-          path: dist
+          merge-multiple: true
       - run: |
           find .
           ryzom-patch-info --index-file ryzom.idx > index/${{ env.app }}.json
@@ -61,11 +61,12 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: index
-          path: index
+          merge-multiple: true
       - name: get current index
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          find .
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
           git commit -am "[ci] Update Index" || true
