@@ -41,6 +41,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dist
+          path: dist
       - run: |
           find .
           ryzom-patch-info --index-file ryzom.idx > index/${{ env.app }}.json
@@ -60,6 +61,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: index
+          path: index
       - name: get current index
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
