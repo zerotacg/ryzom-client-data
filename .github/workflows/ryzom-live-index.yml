@@ -26,7 +26,7 @@ jobs:
           ./src/patch-live-index.sh
       - uses: actions/upload-artifact@v4
         with:
-          name: index
+          name: dist
           path: dist
 
   to-json:
@@ -39,14 +39,14 @@ jobs:
         - ${{ github.workspace }}/dist:/app
     steps:
       - uses: actions/download-artifact@v4
-        name: index
+        name: dist
       - run: |
           find .
           ryzom-patch-info --index-file ryzom.idx > index/${{ env.app }}.json
       - uses: actions/upload-artifact@v4
         with:
-          name: json
-          path: dist
+          name: index
+          path: index
 
   push:
     if: ${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch ) }}
@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
-        name: json
+        name: index
       - name: get current index
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
