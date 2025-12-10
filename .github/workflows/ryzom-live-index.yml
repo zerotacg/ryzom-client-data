@@ -64,7 +64,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mv ${{ env.app }}.json index/
-          find .
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
           git commit -am "[ci] Update Index" || true
