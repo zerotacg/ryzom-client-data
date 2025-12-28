@@ -2,7 +2,7 @@
 
 set -e
 
-base_url="http://dl.ryzom.com/patch_live"
+base_url="https://dl.ryzom.com/patch_live"
 
 version_file=${1:-"version/ryzom_live.version"}
 output_path=${2:-dist}
@@ -14,4 +14,4 @@ index_url="${base_url}/${version_path}/ryzom_${version_path}.idx"
 output="${output_path}/ryzom.idx"
 
 mkdir --parents "${output_path}"
-curl --silent --fail "$index_url" --output "${output}"
+curl --fail --location "$index_url" --output "${output}"

@@ -2,8 +2,8 @@ name: Ryzom Live Index
 
 on:
   push:
-    paths-ignore:
-      - 'index/**'
+    paths:
+      - 'version/**'
   workflow_dispatch:
 
 env:

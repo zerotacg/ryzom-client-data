@@ -1,0 +1,1 @@
+._Files._Files | map({ filename: ._FileName, version: (._Versions | max_by(._VersionNumber) | ._VersionNumber) })
