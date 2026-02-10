@@ -5,7 +5,7 @@ set -e
 base_url="https://dl.ryzom.com/patch_live"
 
 app=${1:-ryzom_live}
-output_path=${2:-version}
+output_path=${2:-dist}
 
 version_file="${app}.version"
 

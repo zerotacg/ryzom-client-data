@@ -17,9 +17,6 @@ concurrency:
 jobs:
   version:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v4
       - name: get current version
@@ -50,7 +47,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: index
-          path: ${{ env.app }}.json
+          path: ${{ env.app }}.*
 
   push:
     needs: [to-json]
@@ -62,12 +59,12 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: index
-      - name: get current index
+      - name: push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mv ${{ env.app }}.json index/
+          mv ${{ env.app }}.* patch/
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
-          git commit -am "[ci] Update Index" || true
+          git commit -am "[ci] Update Version" || true
           git push
