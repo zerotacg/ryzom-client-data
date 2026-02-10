@@ -66,5 +66,5 @@ jobs:
           mv ${{ env.app }}.* patch/
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
-          git commit -am "[ci] Update Version" || true
+          git commit --all --message="[ci] Update Version" || true
           git push
