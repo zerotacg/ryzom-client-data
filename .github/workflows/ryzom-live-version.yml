@@ -23,11 +23,51 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: get current version
+        run: |
+          ./src/patch-live-version.sh ${{ env.app }}
+      - name: get current index
+        run: |
+          ./src/patch-live-index.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  to-json:
+    needs: [version]
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/zerotacg/ryzom-patch-info:latest
+      volumes:
+        - ${{ github.workspace }}:/app
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+      - run: |
+          ryzom-patch-info --index-file ryzom.idx > ${{ env.app }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: index
+          path: ${{ env.app }}.json
+
+  push:
+    needs: [to-json]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: index
+      - name: get current index
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./src/patch-live-version.sh ${{ env.app }}
+          mv ${{ env.app }}.json index/
           git config --global user.name '${{ env.username }}'
           git config --global user.email '${{ env.useremail }}'
-          git commit -am "[ci] Update Version" || true
+          git commit -am "[ci] Update Index" || true
           git push
