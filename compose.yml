@@ -1,0 +1,11 @@
+services:
+  tools:
+    image: ghcr.io/zerotacg/ryzomcore-tools:latest
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+
+  ryzom-patch-info:
+    image: ghcr.io/zerotacg/ryzom-patch-info:latest
+    volumes:
+      - ./:/app
