@@ -43,7 +43,7 @@ jobs:
         with:
           name: dist
       - run: |
-          ryzom-patch-info --index-file ryzom.idx > ${{ env.app }}.json
+          ryzom-patch-info --index-file ${{ env.app }}.idx > ${{ env.app }}.json
       - uses: actions/upload-artifact@v4
         with:
           name: index
