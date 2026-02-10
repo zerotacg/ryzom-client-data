@@ -2,11 +2,9 @@
 
 set -e
 
-index_file=${1:-"index/ryzom_live.json"}
-output_path=${2:-dist}
-
-output="${output_path}/ryzom.json"
+input="${1:-"patch/ryzom_live.json"}"
+app="$(basename --suffix=".json" -- "$input")"
+output="${2:-dist/${app}.json}"
 
 jq --from-file src/file-versions.jq-filter.txt \
-  "${index_file}" \
-  > "${output}"
+  "${input}" > "${output}"

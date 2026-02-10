@@ -4,12 +4,12 @@ set -e
 
 base_url="https://dl.ryzom.com/patch_live"
 
-version_file="${1:-"dist/ryzom_live.version"}"
-app="$(basename --suffix=".version" -- "$version_file")"
+input="${1:-"dist/ryzom_live.version"}"
+app="$(basename --suffix=".version" -- "$input")"
 output="${2:-dist/${app}.idx}"
 
 output_dir="$(dirname -- "$output")"
-version_response=$(cat -- "$version_file")
+version_response=$(cat -- "$input")
 version=${version_response%% *}
 version_path=$(printf "%05d" "${version}")
 
