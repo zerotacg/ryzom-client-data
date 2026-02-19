@@ -18,22 +18,18 @@ jobs:
   version:
     runs-on: ubuntu-latest
     outputs:
-      changed: ${{ steps.changed.outputs.changed }}
+      changed: ${{ steps.version.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
-      - name: get current version
+      - id: version
         run: |
-          ./src/patch-live-version.sh ${{ env.app }}
-      - id: changed
-        run: |
-          echo "changed=true" > "$GITHUB_OUTPUT"
-          git diff --quiet --no-index "dist/${{ env.app }}.version" "patch/${{ env.app }}.version" && echo "changed=false" > "$GITHUB_OUTPUT"
+          ./src/patch-live-version.sh ${{ env.app }} >> "$GITHUB_OUTPUT"
       - name: get current index
-        if: steps.changed.outputs.changed == 'true'
+        if: steps.version.outputs.changed == 'true'
         run: |
           ./src/patch-live-index.sh
       - uses: actions/upload-artifact@v4
-        if: steps.changed.outputs.changed == 'true'
+        if: steps.version.outputs.changed == 'true'
         with:
           name: dist
           path: dist
