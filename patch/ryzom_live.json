@@ -23053,17 +23053,17 @@
         "_FileName": "exedll_win64.bnp",
         "_Versions": [
           {
-            "_VersionNumber": 1040,
-            "_FileSize": 98778372,
-            "_7ZFileSize": 23466818,
-            "_FileTime": 1785528510,
-            "_PatchSize": 18094319,
+            "_VersionNumber": 1042,
+            "_FileSize": 102722517,
+            "_7ZFileSize": 23859526,
+            "_FileTime": 1790094379,
+            "_PatchSize": 23134769,
             "_HashKey": [
-              247683751,
-              3756117017,
-              1952486003,
-              2233383713,
-              676712944
+              3096815695,
+              299650647,
+              1754700621,
+              166683109,
+              2203036408
             ]
           }
         ]
@@ -23189,17 +23189,17 @@
         "_FileName": "exedll_win32.bnp",
         "_Versions": [
           {
-            "_VersionNumber": 1038,
-            "_FileSize": 20787533,
-            "_7ZFileSize": 7430941,
-            "_FileTime": 1782736791,
-            "_PatchSize": 116761,
+            "_VersionNumber": 1042,
+            "_FileSize": 48187273,
+            "_7ZFileSize": 14623882,
+            "_FileTime": 1790094378,
+            "_PatchSize": 10215476,
             "_HashKey": [
-              3977858580,
-              2639915185,
-              3981213545,
-              2435250601,
-              4061286827
+              1811944301,
+              2000798837,
+              411867400,
+              132653245,
+              941852096
             ]
           }
         ]
@@ -23311,17 +23311,17 @@
         "_FileName": "exedll_linux64.bnp",
         "_Versions": [
           {
-            "_VersionNumber": 1040,
-            "_FileSize": 148240811,
-            "_7ZFileSize": 32870374,
-            "_FileTime": 1785528508,
-            "_PatchSize": 38856707,
+            "_VersionNumber": 1042,
+            "_FileSize": 151432904,
+            "_7ZFileSize": 33366093,
+            "_FileTime": 1790094377,
+            "_PatchSize": 40033752,
             "_HashKey": [
-              3859866628,
-              4236618850,
-              314559306,
-              1362051784,
-              3273888421
+              3924441312,
+              1006176408,
+              1741829329,
+              2069322101,
+              893832612
             ]
           }
         ]
@@ -23541,17 +23541,17 @@
         "_FileName": "exedll_osx.bnp",
         "_Versions": [
           {
-            "_VersionNumber": 1040,
-            "_FileSize": 27714173,
-            "_7ZFileSize": 27219407,
-            "_FileTime": 1785528509,
-            "_PatchSize": 24516324,
+            "_VersionNumber": 1042,
+            "_FileSize": 37259465,
+            "_7ZFileSize": 36944314,
+            "_FileTime": 1790094378,
+            "_PatchSize": 34405911,
             "_HashKey": [
-              116031448,
-              1926935323,
-              3963905461,
-              2863813334,
-              3605290105
+              3222078243,
+              2592689051,
+              477857407,
+              1488262319,
+              3599590765
             ]
           }
         ]
