@@ -20,7 +20,7 @@ jobs:
     outputs:
       changed: ${{ steps.version.outputs.changed }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - id: version
         run: |
           ./src/patch-live-version.sh ${{ env.app }} >> "$GITHUB_OUTPUT"
@@ -60,7 +60,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/download-artifact@v8
         with:
           name: index
