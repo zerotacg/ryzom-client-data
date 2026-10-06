@@ -28,7 +28,7 @@ jobs:
         if: steps.version.outputs.changed == 'true'
         run: |
           ./src/patch-live-index.sh
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: steps.version.outputs.changed == 'true'
         with:
           name: dist
@@ -48,7 +48,7 @@ jobs:
           name: dist
       - run: |
           ryzom-patch-info --index-file ${{ env.app }}.idx > ${{ env.app }}.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: index
           path: ${{ env.app }}.*
